@@ -1,0 +1,30 @@
+{
+  "name": "lab-11ejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luapkb/lab-11ejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luapkb/lab-11ejs/issues"
+  },
+  "homepage": "https://github.com/luapkb/lab-11ejs#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.2.1",
+    "pg": "^7.12.1",
+    "superagent": "^5.1.0"
+  }
+}

@@ -1,0 +1,11 @@
+<% bookInst.forEach((book, idx) => { %>
+    <div class="book-div">
+            <img src=<%= book.image_url %>>
+            <h5><%= book.title %></h5>
+            <p><%= book.author %></p>
+            <p><%= book.description %></p>
+            <p>ISBN: <%= book.ISBN %></p>
+            <p><%= book.bookshelf %></p>
+            <button type="button" class='view-details-button' onclick="window.location.href = '/books/<%= idx+1 %>'">View Details</button>
+    </div>
+<% }) %>

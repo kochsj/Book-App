@@ -1,0 +1,23 @@
+<% bookInst.forEach((book, idx) => { %>
+        <div class="book-div">
+                <section style="display: none; position: absolute;" id="form<%= idx %>" class="form">
+                        <form action="/add" method="post">
+                                <input type="text" name="select" placeholder="Title" value="<%= book.title %>">
+                                <input type="text" name="select" placeholder="Author" value="<%= book.author %>">
+                                <input type="text" name="select" placeholder="ISBN" value="<%= book.ISBN %>">
+                                <input type="text" name="select" placeholder="Image URL" value="<%= book.bookImg %>">
+                                <input type="text" name="select" placeholder="Description" value="<%= book.description %>">
+                                <input type="text" name="select" placeholder="Bookshelf" value="<%= book.bookshelf %>">
+                                <button type="submit" class="add-db-button">Add to Database</button>
+                        </form>
+                </section>
+                <img src=<%= book.bookImg %>>
+                <h5><%= book.title %></h5>
+                <p><%= book.author %></p>
+                <p><%= book.description %></p>
+                <p>ISBN: <%= book.ISBN %></p>
+                <p><%= book.bookshelf %></p>
+                <button type="button" class='select-book-button'>Select this Book</button>
+        </div>
+<% }) %>
+ 

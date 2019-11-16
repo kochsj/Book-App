@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../layout/head.ejs")%>
+</head>
+<body>
+  <header>
+    <%- include("../../layout/header.ejs")%>
+    <section>
+      <div id="nav-buttons" style="display: none;">
+        <button class="nav-button" onclick="window.location.href = '/'">HOME</button>
+        <button class="nav-button" onclick="window.location.href = '/search'">NEW SEARCH</button>  
+      </div>
+      <p>Search Results</p>
+    </section>
+  </header>
+  <main>
+    <%- include("viewOne.ejs")%>
+  </main>
+  <footer>
+      <input type="radio"><input type="radio"><input type="radio"><input type="radio">
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+      <script src="../../../styles/app.js"></script>
+  </footer>
+</body>
+</html>

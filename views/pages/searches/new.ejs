@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../../layout/head.ejs")%>
+</head>
+<body>
+  <header>
+    <%- include("../../layout/header.ejs")%>
+    <section>
+      <div id="nav-buttons" style="display: none;">
+        <button class="nav-button" onclick="window.location.href = '/'">HOME</button>
+        <button class="nav-button" onclick="window.location.href = '/search'">NEW SEARCH</button>  
+      </div>
+      <p>Search by Title or Author</p>
+    </section>
+  </header>
+  <main>
+    <form action="/searches" method="post">
+      <input type="text" name="search" placeholder="Enter a title or author">
+      <fieldset>
+        <label for="title">
+          <span>Title</span>
+          <input type="radio" name="search" value="title">
+        </label>
+      </fieldset>
+      <fieldset>
+          <label for="author">
+            <span>Author</span>
+            <input type="radio" name="search" value="author">
+          </label>
+      </fieldset>  
+      <button type="submit">Search the Google Books API</button>    
+    </form>
+  </main>
+  <footer>
+    <%- include("../../layout/footer.ejs")%>
+  </footer>
+</body>
+</html>

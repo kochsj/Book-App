@@ -1,0 +1,141 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    font-size: larger;
+    color: white;
+}
+header section{
+    display: flex;
+    align-items: center;
+    height: 6vw;
+    width: 100%;
+    position: relative;
+    background-color: rgb(56, 56, 56);
+}
+header section h1, header section p{
+    width: 100%;
+    text-align: center;
+}
+#title-div nav{
+    margin-right: 2vw;
+}
+#title-div{
+    height: 6vw;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    font-size: larger;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+#nav{
+    background-color: orange;
+    width: 5vw;
+    height: 2vw;
+}
+#nav-buttons{
+    margin: 0vw;
+    position: absolute;
+    width: 40vw;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.nav-button{
+    margin: 0;
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 3vw;
+}
+header p{
+    margin-left: 2vw;
+}
+section p{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-top: 1vw;
+    padding: 1.5vw;
+    color: white;
+}
+form{
+    padding-top: 1vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+main{
+    flex-grow: 2;
+}
+label{
+    display: flex;
+    align-items: center;
+}
+form input, form fieldset{
+    width: 100%;
+    height: 2.5vw;
+}
+label input{
+    width: 1.5em; 
+    height: 1.5em;
+    margin-left: 2vw;
+}
+fieldset{
+    background-color: rgb(163, 162, 162);
+    border: none;
+    padding: 0;
+    padding-top: 1.5vw;
+}
+label span{
+    margin-left: 1vw;
+}
+form button{
+    background-color: black;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 3vw;
+}
+form input{
+    border: none;
+    color: black;
+}
+footer input{
+    width: 2em; 
+    height: 2em;
+    color: rgb(39, 38, 38);
+}
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 5vw;
+    background-color: black;
+}
+.book-div{
+    margin: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(192, 190, 190);
+}
+.book-div button{
+    margin: 0;
+}
+
+div p, div h5{
+    margin: 0;
+}
+div p{
+    font-size: 0.8em;
+    margin: 1vw;
+}
+div img{
+    margin: 2vw;
+}
+/* .add-one-book-desc{
+    height: 5vw;
+    text-align: start;
+} */
