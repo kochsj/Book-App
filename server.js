@@ -65,8 +65,6 @@ function openSearch(req, res){
 //Add a book to db
 function addBook(req, res) {
   let SQL = 'INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);';
-  console.log(req.body)
-  console.log(req.body.select)
   let values = [req.body.select[1], req.body.select[0], req.body.select[2], req.body.image_url, req.body.description, req.body.select[3]];
 
   client.query(SQL, values).catch(error => errorHandler(error, req, res));
@@ -115,7 +113,6 @@ function updateBook(req, res){
 function deleteBook(req, res){
   let SQL = 'DELETE FROM books WHERE id=$1;';
   let safeValue = [req.params.id];
-  console.log(req.params.id)
   client.query(SQL, safeValue).then(result => {
     res.status(200).redirect('/');
   }).catch(error => errorHandler(error, req, res));
