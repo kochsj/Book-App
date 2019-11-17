@@ -1,8 +1,18 @@
 <div class="book-div">
+    <%- include("edit.ejs")%>
     <img src=<%= bookInst[0].image_url %>>
     <h5><%= bookInst[0].title %></h5>
     <p><%= bookInst[0].author %></p>
     <p><%= bookInst[0].description %></p>
-    <p>ISBN: <%= bookInst[0].ISBN %></p>
+    <p>ISBN: <%= bookInst[0].isbn %></p>
     <p><%= bookInst[0].bookshelf %></p>
+    <div id="update-or-delete-buttons">
+        <form>
+            <button type="button" id="update-book-button">update details</button>
+        </form>
+        <form action="<%=`/delete/${bookInst[0].id}`%>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="delete-book-button" id="<%= bookID %>">delete book</button>
+        </form>
+    </div>
 </div>

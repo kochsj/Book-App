@@ -5,9 +5,9 @@
                                 <input type="text" name="select" placeholder="Title" value="<%= book.title %>">
                                 <input type="text" name="select" placeholder="Author" value="<%= book.author %>">
                                 <input type="text" name="select" placeholder="ISBN" value="<%= book.ISBN %>">
-                                <input type="text" name="select" placeholder="Image URL" value="<%= book.bookImg %>">
-                                <input type="text" name="select" placeholder="Description" value="<%= book.description %>">
-                                <input type="text" name="select" placeholder="Bookshelf" value="<%= book.bookshelf %>">
+                                <textarea name="image_url" placeholder="image url" cols="55" rows="5" value="<%= book.bookImg %>"><%= book.bookImg %></textarea>
+                                <textarea name="description" placeholder="Description of the book" cols="55" rows="10" value="<%= book.description %>"><%= book.description %></textarea>                        
+                                <input type="text" name="select" placeholder="Bookshelf" value="<%= book.category %>">
                                 <button type="submit" class="add-db-button">Add to Database</button>
                         </form>
                 </section>

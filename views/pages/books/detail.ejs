@@ -6,6 +6,6 @@
             <p><%= book.description %></p>
             <p>ISBN: <%= book.ISBN %></p>
             <p><%= book.bookshelf %></p>
-            <button type="button" class='view-details-button' onclick="window.location.href = '/books/<%= idx+1 %>'">View Details</button>
+            <button type="button" class='view-details-button' id="<%= book.id %>">View Details</button>
     </div>
 <% }) %>

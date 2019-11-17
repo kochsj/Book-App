@@ -5,6 +5,7 @@ const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
 const cors = require('cors');
+const methodOverride = require('method-override');
 
 // Environment variables
 require('dotenv').config();
@@ -27,7 +28,13 @@ client.connect().then(() => {
 })
 client.on('error', err => console.error(err));
 
-
+app.use(methodOverride((req, res) => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body){
+    let method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}))
 
 // Routes
 app.get('/', homePage);
@@ -35,6 +42,8 @@ app.get('/search', openSearch);
 app.post('/add', addBook);
 app.get('/books/:id', singleBook);
 app.post('/searches', searchForBooks);
+app.put('/update/:id', updateBook);
+app.delete('/delete/:id', deleteBook);
 app.use('*', notFound);
 app.use(errorHandler);
 
@@ -56,7 +65,9 @@ function openSearch(req, res){
 //Add a book to db
 function addBook(req, res) {
   let SQL = 'INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);';
-  let values = [req.body.select[1], req.body.select[0], req.body.select[2], req.body.select[3], req.body.select[4], req.body.select[5]];
+  console.log(req.body)
+  console.log(req.body.select)
+  let values = [req.body.select[1], req.body.select[0], req.body.select[2], req.body.image_url, req.body.description, req.body.select[3]];
 
   client.query(SQL, values).catch(error => errorHandler(error, req, res));
 
@@ -81,11 +92,35 @@ function errorHandler(error, req, res) {
 //Single book detail page
 function singleBook(req, res){
   let SQL = `SELECT * FROM books WHERE id=$1;`;
-  let data = [req.params.id];
-  client.query(SQL, data).then(data => {
-    res.status(200).render('pages/books/show', { bookInst: data.rows});
+  let safeValue = [req.params.id];
+  client.query(SQL,safeValue).then(data => {
+    let sql = `SELECT DISTINCT bookshelf FROM books;`;
+    client.query(sql).then(results => {
+      res.status(200).render('pages/books/show', { bookInst: data.rows, bookID: req.params.id, lib: results.rows });
+    }).catch(error => errorHandler(error, req, res));
   }).catch(error => errorHandler(error, req, res));
 }
+///////////////////////////////////////////////////////////////////////
+//Update book detail page
+function updateBook(req, res){
+  let SQL = 'UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE id=$7;';
+  let safeValues = [req.body.title, req.body.author, req.body.isbn, req.body.image_url, req.body.description, req.body.bookshelf, req.params.id];
+
+  client.query(SQL, safeValues).then(result => {
+    res.status(200).redirect(`/books/${req.params.id}`);
+  }).catch(error => errorHandler(error, req, res));
+}
+//////////////////////////////////////////////////////////////////////
+//Delete book from DB
+function deleteBook(req, res){
+  let SQL = 'DELETE FROM books WHERE id=$1;';
+  let safeValue = [req.params.id];
+  console.log(req.params.id)
+  client.query(SQL, safeValue).then(result => {
+    res.status(200).redirect('/');
+  }).catch(error => errorHandler(error, req, res));
+}
+
 //USER FORM EVENT HANDLER/////////////////////////////////////////
 
 function searchForBooks(req, res){
@@ -109,8 +144,10 @@ function searchForBooks(req, res){
     }).catch(error => errorHandler(error, req, res));
 }
 
+
+
+
 app.post('/contact', (request, response) => {
-  console.log(request.body);
   response.render('pages/index.ejs');
 });
 
@@ -122,5 +159,10 @@ function Book(data){
   this.author = data.volumeInfo.authors;
   this.description = data.volumeInfo.description;
   this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier;
+  if(typeof data.volumeInfo.categories === 'object'){
+    this.category = data.volumeInfo.categories[0];
+  } else{
+    this.category = data.volumeInfo.categories;
+  }
 }
 

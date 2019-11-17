@@ -1,0 +1,17 @@
+<section style="display: none;" id="update-form">
+    <form action="<%=`/update/${bookInst[0].id}`%>" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="text" name="title" placeholder="Title" value="<%= bookInst[0].title %>">
+        <input type="text" name="author" placeholder="Author" value="<%= bookInst[0].author %>">
+        <input type="text" name="isbn" placeholder="ISBN" value="<%= bookInst[0].isbn %>">
+        <textarea name="image_url" placeholder="image url" cols="55" rows="5"><%= bookInst[0].image_url %></textarea>
+        <textarea name="description" placeholder="Description of the book" cols="55" rows="10"><%= bookInst[0].description %></textarea>
+        <select name="bookshelf" id="bookshelf-dropdown">
+            <option value="<%= bookInst[0].bookshelf %>"
+            <% lib.forEach((library) => { %>
+              <option value="<%= library.bookshelf %>"><%= library.bookshelf %></option>
+            <% }) %>
+        </select>
+        <button type="submit" id="update-book-form-button">update book</button>
+    </form>
+</section>
