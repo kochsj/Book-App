@@ -26,6 +26,7 @@
     "jsdom": "^15.2.1",
     "method-override": "^3.0.0",
     "pg": "^7.12.1",
-    "superagent": "^5.1.0"
+    "superagent": "^5.1.0",
+    "xml-js": "^1.6.11"
   }
 }

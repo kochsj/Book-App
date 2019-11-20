@@ -39,8 +39,8 @@ app.use(methodOverride((req, res) => {
 // Routes
 app.get('/', homePage);
 app.get('/search', openSearch);
-app.post('/add', addBook);
 app.get('/books/:id', singleBook);
+app.post('/add', addBook);
 app.post('/searches', searchForBooks);
 app.put('/update/:id', updateBook);
 app.delete('/delete/:id', deleteBook);
