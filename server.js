@@ -36,6 +36,7 @@ app.use(methodOverride((req, res) => {
   }
 }))
 
+
 // Routes
 app.get('/', homePage);
 app.get('/search', openSearch);
